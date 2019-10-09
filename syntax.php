@@ -4,7 +4,7 @@
  *
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
  * @author     Kasper Sandberg <redeeman@metanurb.dk>
- * @author     Schplurtz le Déboulonné chplurtz@laposte.net>
+ * @author     Schplurtz le Déboulonné <Schplurtz@laposte.net>
  */
 
 // must be run within Dokuwiki
@@ -30,7 +30,7 @@ class syntax_plugin_phpwikify extends DokuWiki_Syntax_Plugin
 	}
 
 	function connectTo( $mode ) {
-		$this->Lexer->addEntryPattern("<phpwikify>(?=.*?</phpwikify>)",$mode,"plugin_phpwikify");
+        	$this->Lexer->addEntryPattern("<phpwikify>(?=.*?</phpwikify>)",$mode,"plugin_phpwikify");
 	}
  
 	function postConnect() {
@@ -41,16 +41,18 @@ class syntax_plugin_phpwikify extends DokuWiki_Syntax_Plugin
 		return array($state,$match);
 	}
 
-	function render( $mode, &$renderer, $data ) {
+	function render( $mode, Doku_Renderer $renderer, $data ) {
 		if($mode == 'xhtml'){
-			ob_start();
-			eval('#'.$data);
-			$renderer->doc .= p_render( "xhtml", p_get_instructions( ob_get_contents() ), $info );
-			ob_end_clean();
+			list($state, $data) = $data;
+			if ($state === DOKU_LEXER_UNMATCHED) {
+				ob_start();
+				eval( $data );
+				$renderer->doc .= p_render( "xhtml", p_get_instructions( ob_get_contents() ), $info );
+				ob_end_clean();
+			}
 			return true;
 		}
 		return false;
 	}
-
 }
 ?>
