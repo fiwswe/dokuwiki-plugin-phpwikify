@@ -1,0 +1,7 @@
+base   phpwikify
+author Kasper Sandberg / Schplurtz le Déboulonné
+email  redeeman@metanurb.dk / <Schplurtz@laposte.net>
+date   2017-12-26
+name   PHP Wikify
+desc   Allows one the possibility of having output of PHP scripts parsed
+url    https://www.dokuwiki.org/plugin:phpwikify

@@ -17,17 +17,6 @@ class syntax_plugin_phpwikify extends DokuWiki_Syntax_Plugin
 		$this->allowedModes = $PARSER_MODES['formatting'];
 	}
 	
-	function getInfo(){
-		return array(
-			'author' => 'Kasper Sandberg',
-			'email'  => 'redeeman@metanurb.dk',
-			'date'   => '2017-12-26',
-			'name'   => 'PHP-Wikify Plugin',
-			'desc'   => 'Enables php to be processed by renderer',
-			'url'    => 'http://wiki.kaspersandberg.com/doku.php?projects:dokuwiki:phpwikify',
-		);
-	}
-
 	function getType(){
 		return "protected";
 	}
