@@ -5,6 +5,7 @@
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
  * @author     Kasper Sandberg <redeeman@metanurb.dk>
  * @author     Schplurtz le Déboulonné <Schplurtz@laposte.net>
+ * @author     Trailjeep <trailjeep@gmail.com>
  */
 
 // must be run within Dokuwiki
