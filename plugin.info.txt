@@ -1,7 +1,7 @@
 # General Plugin Info do not edit
 base   phpwikify
-author Kasper Sandberg / Schplurtz le Déboulonné
-email  redeeman@metanurb.dk / <Schplurtz@laposte.net>
+author Trailjeep
+email  trailjeep@gmail.com
 date   2020-06-05
 name   PHP Wikify
 desc   Allows one the possibility of having output of PHP scripts parsed
