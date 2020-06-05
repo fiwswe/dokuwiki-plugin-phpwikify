@@ -6,19 +6,32 @@
  * @author     Kasper Sandberg <redeeman@metanurb.dk>
  * @author     Schplurtz le Déboulonné <Schplurtz@laposte.net>
  */
+
+// must be run within Dokuwiki
 if(!defined('DOKU_INC')) define('DOKU_INC',realpath(dirname(__FILE__).'/../../').'/');
 if(!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN',DOKU_INC.'lib/plugins/');
 require_once(DOKU_PLUGIN.'syntax.php');
 
+/**
+ * All DokuWiki plugins to extend the parser/rendering mechanism
+ * need to inherit from this class
+ */
 class syntax_plugin_phpwikify extends DokuWiki_Syntax_Plugin {
     function syntax_plugin_phpwikify() { global $PARSER_MODES; $this->allowedModes = $PARSER_MODES['formatting']; }
     function getType()  { return "protected"; }
     function getPType() { return "normal"; }
     function getSort()  { return 0; }
-
     function connectTo( $mode ) { $this->Lexer->addEntryPattern("<phpwikify>(?=.*?</phpwikify>)",$mode,"plugin_phpwikify"); }
     function postConnect() { $this->Lexer->addExitPattern( "</phpwikify>","plugin_phpwikify"); }
+
+    /**
+     * Handle the match
+     */
     function handle( $match, $state, $pos, Doku_Handler $handler ){ return array($state,$match); }
+
+    /**
+     * Create output
+     */
     function render( $mode, Doku_Renderer $renderer, $data ) {
         if($mode == 'xhtml'){
             list($state, $data) = $data;
